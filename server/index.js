@@ -1,6 +1,6 @@
 const jsonServer = require('json-server');
 
-const db = {
+export const db = {
     garage: [
         {
             "name": "Tesla",
