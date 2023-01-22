@@ -1,6 +1,6 @@
 const jsonServer = require('json-server');
 
-export const db = {
+const db = {
     garage: [
         {
             "name": "Tesla",
@@ -41,6 +41,16 @@ const PORT = 3000;
 const state = { velocity: {}, blocked: {} };
 
 server.use(middlewares);
+
+server.get('/cars', (req,res) => {
+    return res.header('Content-Type', 'application/json').status(200).send(JSON.stringify({ cars: db.garage }));
+})
+
+server.post('/cars', (req,res) => {
+    this.db.garage.push(req.body);
+    
+    return res.header('Content-Type', 'application/json').status(200).send(JSON.stringify({ cars: db.garage }));
+})
 
 server.patch('/engine', (req, res) => {
     const { id, status } = req.query;
