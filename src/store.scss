@@ -44,11 +44,16 @@ svg {
     }
 
     .track {
+        margin: 10px 5px;
         border-bottom: 1px solid aliceblue;
     }
 
     .car {
         position: relative;
+
+        svg {
+            transition: all linear;
+        }
 
         .point-a, .point-b {
             position: absolute;
