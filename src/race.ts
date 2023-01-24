@@ -1,10 +1,17 @@
 import { CarService } from './car.service';
 import { Router } from './router';
+import { race } from './index'
 import './store.scss';
+
+interface CarsObject {
+    id: number;
+    name: string;
+    color: string;
+}
 
 export class Race {
     public router: Router;
-    public cars: any[];
+    public cars: CarsObject[];
 
     constructor(private _carService: CarService) {
         this.router = new Router({
@@ -42,8 +49,8 @@ export class Race {
             <input type="submit" class="color1" value="UPDATE">
         </form>
         <div>
-            <button>Race</button>
-            <button>Reset</button>
+            <button id="race-btn">Race</button>
+            <button id="reset-btn">Reset</button>
             <button class="color1" id="generate">Generate cars</button>
         </div>`;
         document.body.append(filter);
@@ -51,7 +58,7 @@ export class Race {
         const container = document.createElement('div');
         container.setAttribute('class', 'container');
         container.innerHTML = `
-        <h2 class="garage-count">Garage<span id="count-in-garage"> (104)</span></h2>
+        <h2 class="garage-count">Garage<span id="count-in-garage"> (4)</span></h2>
         <h3 class="page">Page #1</h3>`;
 
         /**/
@@ -89,7 +96,30 @@ export class Race {
             document.body.append(container);
             container.append(track);
             track.append(carImg);
+
+            const buttonRace = document.getElementById('race-btn') as HTMLElement;
+            buttonRace.onclick = () => {
+                this.cars.forEach((car) => this.start(car.id));
+            }
+
+            const buttonReset = document.getElementById('reset-btn') as HTMLElement;
+            // buttonReset.onclick = () => {
+            //     filter.remove();
+            //     container.remove();
+            //     race.init();
+            // }
+
+            buttonReset.onclick = () => {
+                this.cars.forEach((el) => {
+                    const car = document.getElementById(`car-${el.id}`);
+                    if (car) {
+                    car.style.left = '90px';
+                    car.style.transitionDuration = '0s';
+                    }
+                });
+            }
         });
+            
         /**/
     }
 
