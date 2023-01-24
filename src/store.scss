@@ -1,0 +1,84 @@
+html, body {
+    scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+}
+
+.filter, .container {
+    padding: 10px;
+}
+
+button {
+    text-transform: uppercase;
+    margin: 10px 0;
+    cursor: pointer;
+}
+
+input[type="submit"] {
+    cursor: pointer;
+}
+
+h2, h3, span.model {
+    color: white;
+}
+
+svg {
+    position: relative;
+    left: 90px;
+    top: 3px;
+}
+
+.container {
+
+    span.model {
+        margin-left: 10px;
+    }
+
+    .track {
+        margin: 10px 5px;
+        border-bottom: 1px solid aliceblue;
+    }
+
+    .car {
+        position: relative;
+
+        svg {
+            transition: all linear;
+        }
+
+        .point-a, .point-b {
+            position: absolute;
+            padding: 10px;
+            color: white;
+            display: inline-block;
+            border: solid 1px #fff;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .point-a {
+            left: 0;
+        }
+
+        .point-b {
+            left: 45px;
+        }
+
+        img.flag {
+            position: absolute;
+            right: 100px;
+            bottom: -5px;
+            width: 65px;
+            height: auto;
+        }
+    }
+}
